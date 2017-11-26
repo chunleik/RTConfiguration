@@ -44,7 +44,7 @@ namespace RTConfiguration.Util
             }
         }
 
-        public static object LoadFromXml(string filePath, Type type)
+        public static T LoadFromXml<T>(string filePath)
         {
             object result = null;
 
@@ -52,12 +52,16 @@ namespace RTConfiguration.Util
             {
                 using (StreamReader reader = new StreamReader(filePath))
                 {
-                    System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(type);
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
                     result = xmlSerializer.Deserialize(reader);
                 }
             }
+            else
+            {
+                return default(T);
+            }
 
-            return result;
+            return (T)result;
         }
     }
 }

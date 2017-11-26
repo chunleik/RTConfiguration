@@ -14,9 +14,15 @@ namespace RTConfiguration
             //s.Property1 = "Sample";
             //s.Property2 = 2;
             //Util.XmlSerializerHelper.SaveToXml<Model.RtSection>("RtSection.txt", s);
-            var section = System.Configuration.ConfigurationManager.GetSection("RtSection") as Model.RtSection;
-            Console.WriteLine(section.Property1);
-            Console.WriteLine(section.Property2);
+            //var section = System.Configuration.ConfigurationManager.GetSection("RtSection") as Model.RtSection;
+            //Console.WriteLine(section.Property1);
+            //Console.WriteLine(section.Property2);
+            var loadedRtSection = new Model.LoadedRtSection();
+            loadedRtSection.Load();
+            Console.WriteLine(loadedRtSection.RtSection.Property1);
+            Console.WriteLine(loadedRtSection.RtSection.Property2);
+
+            Console.ReadKey();
         }
     }
 }
