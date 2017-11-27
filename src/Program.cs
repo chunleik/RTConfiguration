@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RTConfiguration
@@ -19,10 +20,13 @@ namespace RTConfiguration
             //Console.WriteLine(section.Property2);
             var loadedRtSection = new Model.LoadedRtSection();
             loadedRtSection.Load();
-            Console.WriteLine(loadedRtSection.RtSection.Property1);
-            Console.WriteLine(loadedRtSection.RtSection.Property2);
+            while (true)
+            {
+                Console.WriteLine(DateTime.Now+"  "+loadedRtSection.RtSection.Property1);
+                Thread.Sleep(500);
+            }
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
